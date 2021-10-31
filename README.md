@@ -22,13 +22,12 @@ On the LevelScene you will find **Level UI Canvas** with the attached script: **
 
 Gameplay is realized through scheduling events that are executed on Tick in Simulation. Feel free to explore this on your own. Relevant Classes: **Simulation.Event<T>, Simulation**, etc. 
 
-All resources needed for the UI can be found in the folder: Assets/Resources
+All resources needed for the UI can be found in the folder: **Assets/Resources**
 
 <h4>End Goal:</h4> 
 
-[Video of completed game UI implementation](https://drive.google.com/file/d/1a0Sw97lHh7eRRrzLEMzPh8SWcipBAmtG/view?usp=sharing)
-
-[Full Requirments & Details for implementation are in this doc](https://docs.google.com/document/d/1X6sJCYW94YOW_BTJ_G9-5dqPlXWPDp-OFdcrqEkS8gM/edit)
+- [Video of completed game UI implementation](https://drive.google.com/file/d/1a0Sw97lHh7eRRrzLEMzPh8SWcipBAmtG/view?usp=sharing)
+- [Full Requirments & Details for implementation are in this doc](https://docs.google.com/document/d/1X6sJCYW94YOW_BTJ_G9-5dqPlXWPDp-OFdcrqEkS8gM/edit)
 
 <h4>Submitting results:</h4>
 
@@ -38,17 +37,17 @@ All resources needed for the UI can be found in the folder: Assets/Resources
 
 <h4>Additional Resources:</h4>
 
-- [job fair.xd](https://drive.google.com/file/d/1SkwYbZIuLBcwuFzABEf7MN-ur5OocFg7/view?usp=sharing)
 - [job fair gameplay.mp4](https://drive.google.com/file/d/1a0Sw97lHh7eRRrzLEMzPh8SWcipBAmtG/view?usp=sharing)
 - [Screen Previews](https://drive.google.com/drive/folders/175QLrnE8aIzhR2NF0tb64Ec8NFekZrkc?usp=sharing)
 
 <h4>Bonus Points:</h4>
 
 - Let's be honest - this game is kinda fun, but there are a lot of opportunities to make it much better
-- Does your UI support different aspect ratios? Everything from 4:3 to 21:9? 
 - Feel free to add more features, new enemies, weapons, new levels, different end conditions
+- Does UI support different aspect ratios? Everything from 4:3 to 21:9? 
 - Make it mobile? Go crazy and earn some bonus points! 
 - If you decide to go wild - make sure to tell us what have you done so we make sure to check it out! 
+
 
 **Good luck!**
 

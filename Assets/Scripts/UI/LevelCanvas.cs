@@ -1,12 +1,22 @@
 using Platformer.Gameplay;
 using Platformer.Model;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Platformer.UI
 {
     public class LevelCanvas : MonoBehaviour
     {
+        #region Fields and Properties
+
+        [SerializeField] private PauseMenu pauseMenu;
+        [SerializeField] private LevelEndedPopup levelEndedPopup;
+        [SerializeField] private TMP_Text lblTokens;
+        [SerializeField] private TMP_Text lblEnemiesKilled;
+        [SerializeField] private TMP_Text lblUsername;
+        #endregion Fields and Properties
+        
+        
         private static LevelCanvas _instance;
         public static LevelCanvas Instance => _instance;
 
@@ -26,19 +36,29 @@ namespace Platformer.UI
             PlayerEnteredVictoryZone.OnExecute -= PlayerWonCallback;
         }
 
+        private void Update()
+        {
+            lblTokens.text = GameDatabase.Instance.CurrentUser.Tokens.ToString();
+            lblEnemiesKilled.text = GameDatabase.Instance.CurrentUser.EnemiesKilled.ToString();
+        }
+
+        #region Event Handlers
+        
         private void PlayerDiedCallback(PlayerDeath playerDeath)
         {
-            GoBackToMainScene();
+            levelEndedPopup.Show(false);
         }
 
         private void PlayerWonCallback(PlayerEnteredVictoryZone playerEnteredVictoryZone)
         {
-            GoBackToMainScene();
+            levelEndedPopup.Show(true);
         }
 
-        private void GoBackToMainScene()
+        public void BtnPauseClicked()
         {
-            SceneManager.LoadScene("Assets/Scenes/MainScene.unity", LoadSceneMode.Single);
+            pauseMenu.Show();
         }
+
+        #endregion Event Handlers
     }
 }

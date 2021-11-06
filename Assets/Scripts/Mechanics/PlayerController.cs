@@ -33,12 +33,16 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        private Vector2 touchPosition;
+        private Vector2 newTouchPosition;
 
         bool jump;
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+
+        [SerializeField]private bool swipeUpCheck;
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -55,12 +59,33 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
-                move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                //Debug.Log((Input.mousePosition.x - Screen.width / 2) / (Screen.width / 2));
+                //move.x = Input.GetAxis("Horizontal"); 
+
+                if(Input.GetMouseButtonDown(0))
+                    newTouchPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                if (Input.GetMouseButton(0))
+                {
+                    move.x = 1.2f * (Input.mousePosition.x - Screen.width / 2) / (Screen.width / 2);
+                    touchPosition = newTouchPosition;
+                    newTouchPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y); 
+                }
+                else
+                    move.x = 0;
+
+                if (newTouchPosition.y - touchPosition.y >= 10 && Input.GetMouseButton(0))
+                    swipeUpCheck = true;
+                else
+                    swipeUpCheck = false;
+                
+                if (jumpState == JumpState.Grounded && swipeUpCheck)/*Input.GetButtonDown("Jump")*/
+                {
                     jumpState = JumpState.PrepareToJump;
-                else if (Input.GetButtonUp("Jump"))
+                }
+                else if (Input.GetMouseButtonUp(0))/*Input.GetButtonUp("Jump")*/
                 {
                     stopJump = true;
+                    swipeUpCheck = false;
                     Schedule<PlayerStopJump>().player = this;
                 }
             }
